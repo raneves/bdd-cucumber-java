@@ -12,6 +12,11 @@ public class Browser {
 		this.driver = new BrowserFactory().createWebDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
+	
+	public Browser(String tipoBrownser) {
+		this.driver = new BrowserFactory().createWebDriver(tipoBrownser);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
 
 	protected WebDriver getDriver() {
 		return driver;

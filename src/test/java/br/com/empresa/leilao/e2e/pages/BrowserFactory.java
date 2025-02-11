@@ -22,16 +22,29 @@ public class BrowserFactory {
 				return new HtmlUnitDriver();
 		}
 	}
+	
+	
+	public WebDriver createWebDriver(String tipoBrowser) {
+		String webdriver = System.getProperty("browser",tipoBrowser);
+		switch (webdriver) {
+			case "firefox":
+				return initFirefoxDriver();
+			case "chrome":
+				return initChromeDriver();
+			default:
+				return new HtmlUnitDriver();
+		}
+	}
 
 	private  WebDriver initChromeDriver() {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\stepp\\Desktop\\curso-bdd\\workspace\\leilao\\drivers\\chromedriver.exe");
+				"D:\\Workspace Eclipse Tools 17 - ESTUDO\\bdd-cucumber-java\\drivers\\chromedriver.exe");
 		return new ChromeDriver();
 	}
 
 	private  WebDriver initFirefoxDriver() {
 		System.setProperty("webdriver.gecko.driver",
-				"C:\\Users\\stepp\\Desktop\\curso-bdd\\workspace\\leilao\\drivers\\geckodriver.exe");
+				"D:\\Workspace Eclipse Tools 17 - ESTUDO\\bdd-cucumber-java\\drivers\\geckodriver.exe");
 		return new FirefoxDriver();
 	}
 }
